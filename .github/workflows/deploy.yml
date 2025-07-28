@@ -2,13 +2,13 @@ name: Build and Deploy SCSS to GitHub Pages
 
 on:
   push:
-    # branches:
-    #   - develop
-    tags:
-      - "v*"
+    branches:
+      - develop
+    # tags:
+    #   - "v*"
 jobs:
   build-and-deploy:
-    if: github.ref == 'refs/heads/development' || startsWith(github.ref, 'refs/tags/v')
+    # if: github.ref == 'refs/heads/development' || startsWith(github.ref, 'refs/tags/v')
     runs-on: ubuntu-latest
 
     steps:
