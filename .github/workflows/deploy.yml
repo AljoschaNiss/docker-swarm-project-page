@@ -36,3 +36,9 @@ jobs:
           branch: main
           folder: docs/dist
           clean: true
+
+      - name: Build Jekyll site
+        uses: actions/jekyll-build-pages@v1
+        with:
+          source: "." # falls keine docs-Ordner da ist
+          destination: "./_site" # Ausgabeordner
