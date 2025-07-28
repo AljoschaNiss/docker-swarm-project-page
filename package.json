@@ -11,5 +11,8 @@
     "build:scss": "sass docs/scss/styles.scss docs/css/styles.css --no-source-map"
   },
   "author": "Aljoscha Niß",
-  "license": "ISC"
+  "license": "ISC",
+  "devDependencies": {
+    "sass": "^1.70.0"
+  }
 }
