@@ -73,7 +73,10 @@ jobs:
         run: |
           mkdir -p docs/assets/css
           npm run build:scss   # erzeugt assets/css/styles.css
-          cp assets/css/styles.css docs/assets/css/  # SCSS output in Jekyll assets Ordner
+          cp docs/index.html dist/docs/        # kopiert HTML
+          cp -r docs/assets/css/* dist/docs/assets/css/      # kopiert CSS in docs/dist/css
+
+        #   cp assets/css/styles.css docs/assets/css/  # SCSS output in Jekyll assets Ordner
 
       - name: Build Jekyll site
         run: |
