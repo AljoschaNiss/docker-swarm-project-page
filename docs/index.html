@@ -61,6 +61,33 @@
         </div>
       </section>
 
+      <section>
+        <div class="mermaid">
+            graph TD
+                subgraph Manager Node
+                    M1[Docker Swarm Manager]
+                    S1[Service A]
+                    S2[Service B]
+                end
+
+                subgraph Worker Node 1
+                    W1[Docker Worker 1]
+                    S3[Service C]
+                end
+
+                subgraph Worker Node 2
+                    W2[Docker Worker 2]
+                    S4[Service D]
+                end
+
+                M1 -->|Manages| W1
+                M1 -->|Manages| W2
+                S1 --- S3
+                S2 --- S4
+
+        </div>
+      </section>
+
       <section class="mb-5">
         <h2>Services</h2>
         <div class="row row-cols-1 row-cols-md-3 g-4">
