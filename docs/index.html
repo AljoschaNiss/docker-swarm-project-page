@@ -53,10 +53,11 @@
 
       <section>
         <div class="mermaid">
-          graph TD NGINX["NGINX Reverse Proxy"] --> Spring["Spring Boot API"]
-          Spring --> Redis["Redis Cache"]
-          Spring --> MQTT["MQTT Broker"] 
-          MQTT --> ESP32["ESP32 Sensor"]
+          graph TD 
+            NGINX["NGINX Reverse Proxy"] --> Spring["Spring Boot API"]
+            Spring --> Redis["Redis Cache"]
+            Spring --> MQTT["MQTT Broker"] 
+            MQTT --> ESP32["ESP32 Sensor"]
         </div>
       </section>
 
