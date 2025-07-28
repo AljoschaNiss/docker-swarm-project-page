@@ -1,4 +1,50 @@
-name: Build and Deploy SCSS to GitHub Pages
+# name: Build and Deploy SCSS to GitHub Pages
+
+# on:
+#   push:
+#     branches:
+#       - develop
+
+# jobs:
+#   build-and-deploy:
+#     runs-on: ubuntu-latest
+
+#     steps:
+#       - name: 📥 Checkout develop branch
+#         uses: actions/checkout@v4
+#         with:
+#           fetch-depth: 0
+
+#       - name: 🧰 Set up Node.js
+#         uses: actions/setup-node@v4
+#         with:
+#           node-version: 20
+
+#       - name: 📦 Install dependencies
+#         run: npm install
+
+#       - name: Build SCSS and prepare dist folder
+#         run: |
+#           mkdir -p dist/docs/css
+#           npm run build:scss         # erstellt assets/css/styles.css
+#           cp docs/index.html dist/docs/        # kopiert HTML
+#           cp -r docs/assets/css/* dist/docs/css/      # kopiert CSS in docs/dist/css
+
+#       - name: Deploy to GitHub Pages
+#         uses: JamesIves/github-pages-deploy-action@v4
+#         with:
+#           branch: main
+#           folder: dist/docs
+#           clean:
+#             true
+
+#             # JEkyll konnte mit seinem eigebautem scss preprocessor nicht arbeiten ohne diesen Eintrag.
+#       - name: Build Jekyll site
+#         uses: actions/jekyll-build-pages@v1
+#         with:
+#           source: "." # falls keine docs-Ordner da ist
+#           destination: "_site" # Ausgabeordner
+name: Build and Deploy SCSS + Jekyll to GitHub Pages
 
 on:
   push:
@@ -23,24 +69,20 @@ jobs:
       - name: 📦 Install dependencies
         run: npm install
 
-      - name: Build SCSS and prepare dist folder
+      - name: Build SCSS and copy files for Jekyll
         run: |
-          mkdir -p dist/docs/css
-          npm run build:scss         # erstellt assets/css/styles.css
-          cp docs/index.html dist/docs/        # kopiert HTML
-          cp -r docs/assets/css/* dist/docs/css/      # kopiert CSS in docs/dist/css
+          mkdir -p docs/assets/css
+          npm run build:scss   # erzeugt assets/css/styles.css
+          cp assets/css/styles.css docs/assets/css/  # SCSS output in Jekyll assets Ordner
+
+      - name: Build Jekyll site
+        run: |
+          bundle install   # falls du Ruby und Bundler nutzt
+          bundle exec jekyll build -s docs -d _site
 
       - name: Deploy to GitHub Pages
         uses: JamesIves/github-pages-deploy-action@v4
         with:
           branch: main
-          folder: dist/docs
-          clean:
-            true
-
-            # JEkyll konnte mit seinem eigebautem scss preprocessor nicht arbeiten ohne diesen Eintrag.
-      - name: Build Jekyll site
-        uses: actions/jekyll-build-pages@v1
-        with:
-          source: "." # falls keine docs-Ordner da ist
-          destination: ".docs/_site" # Ausgabeordner
+          folder: _site
+          clean: true
