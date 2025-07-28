@@ -28,7 +28,7 @@ jobs:
           mkdir -p docs/dist/css
           npm run build:scss         # erstellt css/styles.css
           cp docs/index.html docs/dist/        # kopiert HTML
-          cp -r dist/css/* docs/dist/css/      # kopiert CSS in docs/dist/css
+          cp -r docs/css/* docs/dist/css/      # kopiert CSS in docs/dist/css
 
       - name: Deploy to GitHub Pages
         uses: JamesIves/github-pages-deploy-action@v4
