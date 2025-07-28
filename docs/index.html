@@ -88,6 +88,34 @@
         </div>
       </section>
 
+
+      <section>
+        <div class="mermaid">
+            graph TD
+                subgraph IoT Devices
+                    ESP32[ESP32 Sensor / Microcontroller]
+                end
+
+                subgraph Docker Swarm Cluster
+                    Manager[Swarm Manager Node]
+                    Worker1[Swarm Worker Node 1]
+                    Worker2[Swarm Worker Node 2]
+
+                    ServiceA[Data Collector Service]
+                    ServiceB[MQTT Broker Service]
+                    ServiceC[API Service]
+                end
+
+                ESP32 -->|MQTT/HTTP| ServiceB
+                ServiceB --> ServiceA
+                ServiceA --> ServiceC
+
+                Manager --> Worker1
+                Manager --> Worker2
+
+        </div>
+      </section>
+
       <section class="mb-5">
         <h2>Services</h2>
         <div class="row row-cols-1 row-cols-md-3 g-4">
@@ -139,7 +167,7 @@
     </main>
 
     <footer class="bg-dark text-white text-center py-3">
-      <p class="mb-0">&copy; 2025 Yoshi | Microservice Präsentation</p>
+      <p class="mb-0">&copy; 2025 Aljoscha Niß | Microservice Präsentation</p>
     </footer>
   </body>
 </html>
