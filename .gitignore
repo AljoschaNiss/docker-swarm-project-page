@@ -1,6 +1,3 @@
-#  for ignoring github actions
-.github
-
 # Logs
 logs
 *.log
