@@ -27,16 +27,18 @@ jobs:
         run: |
           mkdir -p docs/dist/css
           npm run build:scss         # erstellt assets/css/styles.css
-          cp docs/index.html docs/dist/        # kopiert HTML
-          cp -r docs/assets/css/* docs/dist/css/      # kopiert CSS in docs/dist/css
+          cp docs/index.html dist/docs/        # kopiert HTML
+          cp -r docs/assets/css/* dist/docs/css/      # kopiert CSS in docs/dist/css
 
       - name: Deploy to GitHub Pages
         uses: JamesIves/github-pages-deploy-action@v4
         with:
           branch: main
-          folder: docs/dist
-          clean: true
+          folder: dist/docs
+          clean:
+            true
 
+            # JEkyll konnte mit seinem eigebautem scss preprocessor nicht arbeiten ohne diesen Eintrag.
       - name: Build Jekyll site
         uses: actions/jekyll-build-pages@v1
         with:
