@@ -25,7 +25,7 @@ jobs:
 
       - name: Build SCSS and prepare dist folder
         run: |
-          mkdir -p docs/dist/css
+          mkdir -p dist/docs/css
           npm run build:scss         # erstellt assets/css/styles.css
           cp docs/index.html dist/docs/        # kopiert HTML
           cp -r docs/assets/css/* dist/docs/css/      # kopiert CSS in docs/dist/css
