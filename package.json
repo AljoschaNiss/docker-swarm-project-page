@@ -8,7 +8,7 @@
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build:scss": "sass docs/scss/styles.scss docs/css/styles.css --no-source-map"
+    "build:scss": "sass docs/assets/scss/styles.scss docs/assets/css/styles.css --no-source-map"
   },
   "author": "Aljoscha Niß",
   "license": "ISC",
